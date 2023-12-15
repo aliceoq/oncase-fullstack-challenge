@@ -1,29 +1,13 @@
 import { Participant } from "../models/participant";
 
 // Data
-let participants: Participant[] = [
+export let participants: Participant[] = [
   {
     name: "Alice",
     lastName: "Oliveira",
     participation: 20,
   },
 ];
-
-// Validation
-const validateParticipant = (participant: any): boolean => {
-  return (
-    !!participant.name &&
-    !!participant.lastName &&
-    typeof participant.participation === "number"
-  );
-};
-
-const participantExists = (name: string, lastName: string): boolean => {
-  return participants.some(
-    (participant) =>
-      participant.name === name && participant.lastName === lastName
-  );
-};
 
 interface ServiceResult<T> {
   data?: T;
@@ -33,12 +17,6 @@ interface ServiceResult<T> {
 const addParticipant = (
   participant: Participant
 ): ServiceResult<Participant> => {
-  const result = validateParticipant(participant);
-  if (!result)
-    return {
-      error:
-        "Invalid format in request body. The participant object should have name (string), last name (string) and participation (number).",
-    };
   participants.push(participant);
   return { data: participant };
 };

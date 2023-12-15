@@ -1,10 +1,10 @@
-import { Router, Request, Response } from 'express';
+import { Router } from 'express';
 import { addParticipant, getParticipants, resetParticipants } from '../controllers/participant';
-import { checkParticipantExistence, participantValidationRules } from '../middleware/validation';
+import { participantValidationRules } from '../middleware/validation';
 
 const router = Router();
 
-router.post('/', participantValidationRules, checkParticipantExistence, addParticipant)
+router.post('/', participantValidationRules, addParticipant)
 router.get('/', getParticipants)
 //router.del('/', deleteParticipant)
 //router.put('/', updateParticipant)

@@ -1,50 +1,44 @@
+import {
+  createParticipantQuery,
+  deleteParticipantQuery,
+  getParticipantsQuery,
+  resetParticipantsQuery,
+} from "../db/queries";
 import { Participant } from "../models/participant";
-
-// Data
-export let participants: Participant[] = [
-  {
-    name: "Alice",
-    lastName: "Oliveira",
-    participation: 20,
-  },
-];
 
 interface ServiceResult<T> {
   data?: T;
   error?: string;
 }
 
-const addParticipant = (
+const addParticipant = async (
   participant: Participant
-): ServiceResult<Participant> => {
-  participants.push(participant);
-  return { data: participant };
+): Promise<ServiceResult<Participant>> => {
+  const result = await createParticipantQuery(participant);
+  return { data: result };
 };
 
-const getParticipants = (): ServiceResult<Participant[]> => {
+const getParticipants = async (): Promise<ServiceResult<Participant[]>> => {
+  const participants = await getParticipantsQuery();
   return { data: participants };
 };
 
-const resetParticipants = (): ServiceResult<boolean> => {
-  participants = [];
+const resetParticipants = async (): Promise<ServiceResult<boolean>> => {
+  await resetParticipantsQuery();
   return { data: true };
 };
 
-const deleteParticipant = (
+const deleteParticipant = async (
   name: string,
   lastName: string
-): ServiceResult<Participant> => {
-  const index = participants.findIndex(
-    (participant) =>
-      participant.name === name && participant.lastName === lastName
-  );
-
-  if (index !== -1) {
-    const deletedParticipant = participants.splice(index, 1)[0];
-    return { data: deletedParticipant };
-  } 
-  
-  return { error: 'Participant not found.' };
+): Promise<ServiceResult<Participant[]>> => {
+  const res = await deleteParticipantQuery(name, lastName);
+  return { data: res };
 };
 
-export default { addParticipant, getParticipants, resetParticipants, deleteParticipant };
+export default {
+  addParticipant,
+  getParticipants,
+  resetParticipants,
+  deleteParticipant,
+};

@@ -1,5 +1,8 @@
 import express, { Request, Response } from "express";
 import participantRoutes from "./routes/participant";
+import * as dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 8000;

@@ -5,7 +5,14 @@ export const participantValidationRules = [
   body("lastName").notEmpty().withMessage("Last name is required"),
   body("participation")
     .isNumeric()
-    .withMessage("Participation must be a number"),
+    .withMessage("Participation must be a number")
+    .custom((value) => {
+      const numericValue = parseFloat(value);
+      if (isNaN(numericValue) || numericValue < 0) {
+        throw new Error("Participation must be a positive number");
+      }
+      return true;
+    }),
 ];
 
 export const deleteParticipantRules = [

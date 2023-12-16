@@ -2,7 +2,8 @@ import {
   createParticipantQuery,
   deleteParticipantQuery,
   getParticipantsQuery,
-  resetParticipantsQuery,
+  deleteParticipantsQuery,
+  updateParticipantQuery,
 } from "../db/queries";
 import { Participant } from "../models/participant";
 
@@ -13,32 +14,38 @@ interface ServiceResult<T> {
 
 const addParticipant = async (
   participant: Participant
-): Promise<ServiceResult<Participant>> => {
+): Promise<Participant> => {
   const result = await createParticipantQuery(participant);
-  return { data: result };
+  return result;
 };
 
-const getParticipants = async (): Promise<ServiceResult<Participant[]>> => {
+const getParticipants = async (): Promise<Participant[]> => {
   const participants = await getParticipantsQuery();
-  return { data: participants };
+  return participants;
 };
 
-const resetParticipants = async (): Promise<ServiceResult<boolean>> => {
-  await resetParticipantsQuery();
-  return { data: true };
+const deleteParticipants = async (): Promise<void> => {
+  await deleteParticipantsQuery();
 };
 
 const deleteParticipant = async (
   name: string,
   lastName: string
-): Promise<ServiceResult<Participant[]>> => {
-  const res = await deleteParticipantQuery(name, lastName);
-  return { data: res };
+): Promise<void> => {
+  await deleteParticipantQuery(name, lastName);
 };
+
+const updateParticipant = async (
+  participant: Participant
+): Promise<Participant> => {
+  const result = await updateParticipantQuery(participant);
+  return result
+}
 
 export default {
   addParticipant,
   getParticipants,
-  resetParticipants,
+  deleteParticipants,
   deleteParticipant,
+  updateParticipant,
 };

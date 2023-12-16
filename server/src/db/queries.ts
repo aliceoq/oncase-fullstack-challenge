@@ -6,7 +6,6 @@ const createParticipantQuery = async (participant: Participant) => {
     "INSERT INTO participants (name, lastName, participation) VALUES ($1, $2, $3) RETURNING *;",
     [participant.name, participant.lastName, participant.participation]
   );
-
   return res.rows[0];
 };
 
@@ -15,7 +14,7 @@ const getParticipantsQuery = async (): Promise<Participant[]> => {
   return rows;
 };
 
-const resetParticipantsQuery = async () => {
+const deleteParticipantsQuery = async () => {
   await pool.query("DELETE FROM participants;");
 };
 
@@ -30,6 +29,18 @@ const deleteParticipantQuery = async (
   return rows;
 };
 
+const updateParticipantQuery = async (
+  participant: Participant
+): Promise<Participant> => {
+  const res = await pool.query(
+    "UPDATE participants SET participation = $1 WHERE name = $2 AND lastName = $3 RETURNING *",
+    [participant.participation, participant.name, participant.lastName]
+  );
+
+  if (res.rowCount === 0) throw new Error('Participant with the given name and last name does not exist.');
+  else return res.rows[0];
+};
+
 const test = () => {
   pool.query("select now()");
 };
@@ -37,7 +48,8 @@ const test = () => {
 export {
   createParticipantQuery,
   getParticipantsQuery,
-  resetParticipantsQuery,
+  deleteParticipantsQuery,
   deleteParticipantQuery,
+  updateParticipantQuery,
   test,
 };

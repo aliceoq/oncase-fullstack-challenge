@@ -37,8 +37,8 @@ const deleteParticipant = async (req: Request, res: Response) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) return res.status(400).json({ error: errors.array() });
   try {
-    const { name, lastName } = req.body;
-    await service.deleteParticipant(name, lastName);
+    const { name, lastname } = req.body;
+    await service.deleteParticipant(name, lastname);
     res.status(204).send("Participant deleted.");
   } catch (err: any) {
     res.status(500).json({ error: err.message });

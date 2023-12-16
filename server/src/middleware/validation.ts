@@ -2,7 +2,7 @@ import { body } from "express-validator";
 
 export const participantValidationRules = [
   body("name").notEmpty().withMessage("Name is required"),
-  body("lastName").notEmpty().withMessage("Last name is required"),
+  body("lastname").notEmpty().withMessage("Last name is required"),
   body("participation")
     .isNumeric()
     .withMessage("Participation must be a number")
@@ -17,5 +17,5 @@ export const participantValidationRules = [
 
 export const deleteParticipantRules = [
   body("name").notEmpty().withMessage("Name is required"),
-  body("lastName").notEmpty().withMessage("Last name is required"),
+  body("lastname").notEmpty().withMessage("Last name is required"),
 ];

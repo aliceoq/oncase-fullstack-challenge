@@ -3,8 +3,8 @@ import { pool } from "./postgres-config";
 
 const createParticipantQuery = async (participant: Participant) => {
   const res = await pool.query(
-    "INSERT INTO participants (name, lastName, participation) VALUES ($1, $2, $3) RETURNING *;",
-    [participant.name, participant.lastName, participant.participation]
+    "INSERT INTO participants (name, lastname, participation) VALUES ($1, $2, $3) RETURNING *;",
+    [participant.name, participant.lastname, participant.participation]
   );
   return res.rows[0];
 };
@@ -20,10 +20,10 @@ const deleteParticipantsQuery = async () => {
 
 const deleteParticipantQuery = async (
   name: string,
-  lastName: string
+  lastname: string
 ): Promise<Participant[]> => {
   const { rows } = await pool.query(
-    `DELETE FROM participants WHERE name = '${name}' AND lastName = '${lastName}';`
+    `DELETE FROM participants WHERE name = '${name}' AND lastname = '${lastname}';`
   );
 
   return rows;
@@ -33,13 +33,21 @@ const updateParticipantQuery = async (
   participant: Participant
 ): Promise<Participant> => {
   const res = await pool.query(
-    "UPDATE participants SET participation = $1 WHERE name = $2 AND lastName = $3 RETURNING *",
-    [participant.participation, participant.name, participant.lastName]
+    "UPDATE participants SET participation = $1 WHERE name = $2 AND lastname = $3 RETURNING *",
+    [participant.participation, participant.name, participant.lastname]
   );
 
   if (res.rowCount === 0) throw new Error('Participant with the given name and last name does not exist.');
   else return res.rows[0];
 };
+
+const beginTransactionQuery = async () => {
+  await pool.query("BEGIN");
+}
+
+const endTransactionQuery = async () => {
+  await pool.query("ROLLBACK");
+}
 
 const test = () => {
   pool.query("select now()");
@@ -51,5 +59,7 @@ export {
   deleteParticipantsQuery,
   deleteParticipantQuery,
   updateParticipantQuery,
+  beginTransactionQuery,
+  endTransactionQuery,
   test,
 };

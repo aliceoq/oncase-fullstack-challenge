@@ -7,11 +7,6 @@ import {
 } from "../db/queries";
 import { Participant } from "../models/participant";
 
-interface ServiceResult<T> {
-  data?: T;
-  error?: string;
-}
-
 const addParticipant = async (
   participant: Participant
 ): Promise<Participant> => {
@@ -30,9 +25,9 @@ const deleteParticipants = async (): Promise<void> => {
 
 const deleteParticipant = async (
   name: string,
-  lastName: string
+  lastname: string
 ): Promise<void> => {
-  await deleteParticipantQuery(name, lastName);
+  await deleteParticipantQuery(name, lastname);
 };
 
 const updateParticipant = async (

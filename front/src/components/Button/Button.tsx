@@ -1,9 +1,13 @@
-import "./App.css";
+import React from "react";
+import { StyledButton } from "./Button.styles";
 
-function Button() {
-  return (
-    <button>Botão</button>
-  );
+interface Props {
+  text: string;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
+}
+
+function Button({ text, onClick }: Props) {
+  return <StyledButton onClick={onClick}>{text}</StyledButton>;
 }
 
 export default Button;

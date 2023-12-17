@@ -1,20 +1,28 @@
-import "./App.css";
+import { Participant } from "../../types";
 
-function Button() {
+interface Props {
+  participants: Participant[];
+}
+
+function Table({ participants }: Props) {
   return (
     <table>
       <tr>
-        <th>Company</th>
-        <th>Contact</th>
-        <th>Country</th>
+        <th></th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Participation</th>
       </tr>
-      <tr>
-        <td>Alfreds Futterkiste</td>
-        <td>Maria Anders</td>
-        <td>Germany</td>
-      </tr>
+      {participants.map((participant, index) => (
+        <tr>
+          <td>{index}</td>
+          <td>{participant.name}</td>
+          <td>{participant.lastname}</td>
+          <td>{participant.participation}%</td>
+        </tr>
+      ))}
     </table>
   );
 }
 
-export default Button;
+export default Table;

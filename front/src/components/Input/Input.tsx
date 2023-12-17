@@ -1,7 +1,5 @@
-import "./App.css";
-
-function Button() {
+function Input() {
   return <input type="text" />;
 }
 
-export default Button;
+export default Input;

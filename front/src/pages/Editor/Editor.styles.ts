@@ -7,8 +7,8 @@ const Root = styled.div`
   text-align: center;
 `;
 
-const Card = styled.div`
-  padding: 2em;
+const ChartContainer = styled.div`
+  width: 500px;
 `;
 
-export { Root, Card };
+export { Root, ChartContainer };

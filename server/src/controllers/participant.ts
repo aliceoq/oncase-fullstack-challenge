@@ -9,7 +9,7 @@ const addParticipant = async (req: Request, res: Response) => {
   try {
     const participant = req.body;
     const result = await service.addParticipant(participant);
-    res.status(201).json({ data: result });
+    res.status(201).json(result);
   } catch (err: any) {
     res.status(500).json({ error: err.message });
   }
@@ -18,7 +18,7 @@ const addParticipant = async (req: Request, res: Response) => {
 const getParticipants = async (req: Request, res: Response) => {
   try {
     const participants = await service.getParticipants();
-    res.status(200).json({ data: participants });
+    res.status(200).json(participants);
   } catch (err: any) {
     res.status(500).json({ error: err.message });
   }
@@ -51,7 +51,7 @@ const updateParticipant = async (req: Request, res: Response) => {
   try {
     const participant = req.body;
     const result = await service.updateParticipant(participant);
-    res.status(200).json({ data: result });
+    res.status(200).json(result);
   } catch (err: any) {
     res.status(500).json({ error: err.message });
   }

@@ -27,16 +27,6 @@ const chartOptions: ApexOptions = {
   dataLabels: {
     enabled: false,
   },
-  plotOptions: {
-    pie: {
-      donut: {
-        labels: {
-          show: false,
-        },
-        size: '52%',
-      },
-    },
-  },
 };
 
 interface Props {

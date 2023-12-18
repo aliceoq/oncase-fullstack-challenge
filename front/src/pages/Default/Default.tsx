@@ -1,29 +1,26 @@
 import { Outlet } from "react-router-dom";
-import { getParticipantsRequest } from "../../services/participant.service";
+import { getParticipants } from "../../services/participant.service";
 import { useQuery } from "@tanstack/react-query";
+import ErrorComponent from "../../components/ErrorComponent/ErrorComponent";
 
 function Default() {
   const { isLoading, isError, data, error } = useQuery({
     queryKey: ["participants"],
     queryFn: async () => {
-      const { data } = await getParticipantsRequest();
+      const { data } = await getParticipants();
       return data;
     },
   });
 
   if (isLoading) {
-    return <span>Loading...</span>
+    return <ErrorComponent>Loading...</ErrorComponent>;
   }
 
   if (isError) {
-    return <span>Error: {error.message}</span>;
+    return <ErrorComponent>Error: {error.message}</ErrorComponent>;
   }
 
-  return (
-    <div>
-      <Outlet context={{ participants: data ?? [] }} />
-    </div>
-  );
+  return <Outlet context={{ participants: data ?? [] }} />;
 }
 
 export default Default;

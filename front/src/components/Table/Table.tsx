@@ -1,4 +1,12 @@
 import { Participant } from "../../types";
+import {
+  IndexCell,
+  PercentageCell,
+  StyledTable,
+  TableCell,
+  TableHeader,
+  TableRow,
+} from "./Table.styles";
 
 interface Props {
   participants: Participant[];
@@ -6,22 +14,26 @@ interface Props {
 
 function Table({ participants }: Props) {
   return (
-    <table>
-      <tr>
-        <th></th>
-        <th>First name</th>
-        <th>Last name</th>
-        <th>Participation</th>
-      </tr>
-      {participants.map((participant, index) => (
-        <tr>
-          <td>{index}</td>
-          <td>{participant.name}</td>
-          <td>{participant.lastname}</td>
-          <td>{participant.participation}%</td>
-        </tr>
-      ))}
-    </table>
+    <StyledTable>
+      <thead>
+        <TableRow>
+          <TableHeader></TableHeader>
+          <TableHeader>First name</TableHeader>
+          <TableHeader>Last name</TableHeader>
+          <TableHeader>Participation</TableHeader>
+        </TableRow>
+      </thead>
+      <tbody>
+        {participants.map((participant, index) => (
+          <TableRow key={index}>
+            <IndexCell>{index + 1}</IndexCell>
+            <TableCell>{participant.name}</TableCell>
+            <TableCell>{participant.lastname}</TableCell>
+            <PercentageCell>{participant.participation}%</PercentageCell>
+          </TableRow>
+        ))}
+      </tbody>
+    </StyledTable>
   );
 }
 

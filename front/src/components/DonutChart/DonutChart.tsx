@@ -14,7 +14,6 @@ const chartOptions: ApexOptions = {
       width: 25,
       height: 25,
       radius: 5,
-      offsetY: 8,
       offsetX: -8,
     },
     labels: {

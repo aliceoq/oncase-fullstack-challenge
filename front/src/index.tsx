@@ -1,6 +1,10 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
-import { createBrowserRouter, redirect, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  redirect,
+  RouterProvider,
+} from "react-router-dom";
 import "./index.css";
 import Default from "./pages/Default/Default";
 import Editor from "./pages/Editor/Editor";
@@ -23,9 +27,9 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: '*',
-    loader: () => redirect('/')
-  }
+    path: "*",
+    loader: () => redirect("/"),
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

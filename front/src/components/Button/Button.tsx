@@ -3,9 +3,9 @@ import { StyledButton } from "./Button.styles";
 
 function Button({
   children,
-  onClick,
+  ...props
 }: React.ButtonHTMLAttributes<HTMLButtonElement>) {
-  return <StyledButton onClick={onClick}>{children}</StyledButton>;
+  return <StyledButton {...props}>{children}</StyledButton>;
 }
 
 export default Button;

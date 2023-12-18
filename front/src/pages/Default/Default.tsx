@@ -5,7 +5,7 @@ import ErrorComponent from "../../components/ErrorComponent/ErrorComponent";
 
 function Default() {
   const { isLoading, isError, data, error } = useQuery({
-    queryKey: ["participants"],
+    queryKey: ["getParticipants"],
     queryFn: async () => {
       const { data } = await getParticipants();
       return data;

@@ -14,6 +14,7 @@ import {
 import { useMutation } from "@tanstack/react-query";
 import { addParticipant } from "../../services/participant.service";
 import { FormEvent } from "react";
+import { queryClient } from "../..";
 
 function Editor() {
   const context = useOutletContext<ContextType>();
@@ -21,6 +22,12 @@ function Editor() {
     mutationFn: async (newParticipant: Participant) => {
       const { data } = await addParticipant(newParticipant);
       return data;
+    },
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({
+        queryKey: ["getParticipants"],
+        refetchType: "active",
+      });
     },
   });
 

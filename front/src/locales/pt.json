@@ -11,5 +11,7 @@
     "toast_add.error": "Erro durante a criação do participante.",
     "toast_edit.success": "Participante editado com sucesso!",
     "toast_edit.error": "Error durante a edição do participante.",
+    "toast_delete.success": "Participante deletado com sucesso!",
+    "toast_delete.error": "Error durante a remoção do participante.",
     "chart.remaining": "Em falta"
 }

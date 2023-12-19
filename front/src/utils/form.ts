@@ -56,5 +56,4 @@ export const handleSubmit = async (
   }
 
   mutation.mutate(formData);
-  event.currentTarget.reset();
 };

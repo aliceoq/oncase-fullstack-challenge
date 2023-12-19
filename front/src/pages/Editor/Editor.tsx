@@ -50,10 +50,10 @@ function Editor() {
         queryKey: ["getParticipants"],
         refetchType: "active",
       });
-      toast.success(t("toast_edit.success"));
+      toast.success(t("toast_delete.success"));
     },
     onError: () => {
-      toast.error(t("toast_edit.error"));
+      toast.error(t("toast_delete.error"));
     },
   });
 

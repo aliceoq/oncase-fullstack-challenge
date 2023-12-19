@@ -11,5 +11,7 @@
     "toast_add.error": "Error while creating new participant.",
     "toast_edit.success": "Participant edited successfully!",
     "toast_edit.error": "Error while updating participant.",
+    "toast_delete.success": "Participant deleted successfully!",
+    "toast_delete.error": "Error while deleting participant.",
     "chart.remaining": "Remaining"
 }

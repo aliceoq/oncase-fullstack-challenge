@@ -69,7 +69,9 @@ function Default() {
         theme="light"
       />
       <TopBar>
-        <StyledForm onSubmit={(event) => handleSubmit(event, addParticipantMutation)}>
+        <StyledForm
+          onSubmit={(event) => handleSubmit(event, addParticipantMutation)}
+        >
           <Input
             name="firstname"
             placeholder={t("editor_form_first_name.input")}
@@ -85,9 +87,7 @@ function Default() {
           <Button type="submit">{t("editor_form.button")}</Button>
         </StyledForm>
         {location.pathname === "/editor" && (
-          <Button onClick={() => navigate("/")}>
-            {t("editor.button")}
-          </Button>
+          <Button onClick={() => navigate("/")}>{t("editor.button")}</Button>
         )}
         {location.pathname === "/" && (
           <Button onClick={() => navigate("/editor")}>

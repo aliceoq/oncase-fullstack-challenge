@@ -1,0 +1,11 @@
+{
+    "editor.title": "Participation registration",
+    "editor.description": "Insert the first name, last name and the participation (%) and submit to add.",
+    "editor_form_first_name.input": "First name",
+    "editor_form_last_name.input": "Last name",
+    "editor_form_participation.input": "Participation",
+    "editor_form.button": "Send",
+    "toast_add.success": "Participant added successfully!",
+    "toast_add.error": "Error while creating new participant.",
+    "chart.remaining": "Remaining"
+}

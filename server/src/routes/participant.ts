@@ -7,16 +7,22 @@ import {
   updateParticipant,
 } from "../controllers/participant";
 import {
-  deleteParticipantRules,
-  participantValidationRules,
+  newParticipationRule,
+  participantNameRules,
+  updateParticipationRule,
 } from "../middleware/validation";
 
 const router = Router();
 
-router.post("/", participantValidationRules, addParticipant);
+router.post("/", newParticipationRule, addParticipant);
 router.get("/", getParticipants);
-router.delete("/", deleteParticipantRules, deleteParticipant);
-router.put("/", participantValidationRules, updateParticipant)
+router.delete("/", participantNameRules, deleteParticipant);
+router.put(
+  "/",
+  participantNameRules,
+  updateParticipationRule,
+  updateParticipant
+);
 router.delete("/reset", deleteParticipants);
 
 export default router;

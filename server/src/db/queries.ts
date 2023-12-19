@@ -37,17 +37,34 @@ const updateParticipantQuery = async (
     [participant.participation, participant.name, participant.lastname]
   );
 
-  if (res.rowCount === 0) throw new Error('Participant with the given name and last name does not exist.');
+  if (res.rowCount === 0)
+    throw new Error(
+      "Participant with the given name and last name does not exist."
+    );
   else return res.rows[0];
+};
+
+const getPartipationTotalQuery = async (): Promise<number> => {
+  const result = await pool.query(
+    "SELECT SUM(participation) AS total_participation FROM participants;"
+  );
+  return parseInt(result.rows[0].total_participation);
+};
+
+const getParticipationTotalWhereQuery = async (participant: Participant): Promise<number> => {
+  const result = await pool.query(
+    `SELECT SUM(participation) AS total_participation FROM participants WHERE (name, lastName) <> ('${participant.name}', '${participant.lastname}');`
+  );
+  return parseInt(result.rows[0].total_participation);
 };
 
 const beginTransactionQuery = async () => {
   await pool.query("BEGIN");
-}
+};
 
 const endTransactionQuery = async () => {
   await pool.query("ROLLBACK");
-}
+};
 
 const test = () => {
   pool.query("select now()");
@@ -61,5 +78,7 @@ export {
   updateParticipantQuery,
   beginTransactionQuery,
   endTransactionQuery,
+  getPartipationTotalQuery,
+  getParticipationTotalWhereQuery,
   test,
 };

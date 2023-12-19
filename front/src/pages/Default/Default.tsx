@@ -5,7 +5,7 @@ import {
 } from "../../services/participant.service";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import ErrorComponent from "../../components/ErrorComponent/ErrorComponent";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useTranslation } from "react-i18next";
 import { Participant } from "../../types";
@@ -56,18 +56,6 @@ function Default() {
 
   return (
     <div>
-      <ToastContainer
-        position="bottom-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
       <TopBar>
         <StyledForm
           onSubmit={(event) => handleSubmit(event, addParticipantMutation)}

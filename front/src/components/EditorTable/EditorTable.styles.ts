@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
+const Container = styled.div`
+  max-width: 100vw;
+  overflow-x: auto;
+  margin: 0 10px 0 10px;
+`;
+
 const StyledTable = styled.table`
   height: max-content;
   border-collapse: collapse;
@@ -47,6 +53,7 @@ const ButtonCell = styled(TableCell)`
 `
 
 export {
+  Container,
   StyledTable,
   TableCell,
   TableHeader,

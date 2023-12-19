@@ -14,7 +14,8 @@ const Flex = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-  gap: 8em;
+  gap: 50px;
+  flex-wrap: wrap;
 `;
 
 const StyledForm = styled.form`

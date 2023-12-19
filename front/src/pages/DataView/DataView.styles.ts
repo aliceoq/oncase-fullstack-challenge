@@ -22,7 +22,8 @@ const TitleContainer = styled.div`
 const DataContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 100px;
+  column-gap: 100px;
+  row-gap: 50px;
   justify-content: center;
 `;
 

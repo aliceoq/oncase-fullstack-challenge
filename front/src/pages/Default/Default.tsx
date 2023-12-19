@@ -10,11 +10,11 @@ import "react-toastify/dist/ReactToastify.css";
 import { useTranslation } from "react-i18next";
 import { Participant } from "../../types";
 import { queryClient } from "../..";
-import { FormEvent } from "react";
 import { StyledForm, TopBar } from "./Default.styles";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import LoadingComponent from "../../components/LoadingComponent/LoadingComponent";
+import { handleSubmit } from "../../utils/form";
 
 function Default() {
   const { isLoading, isError, data, error } = useQuery({
@@ -46,19 +46,6 @@ function Default() {
     },
   });
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    const formData: Participant = {
-      name: event.currentTarget.firstname.value,
-      lastname: event.currentTarget.lastname.value,
-      participation: event.currentTarget.participation.value,
-    };
-
-    addParticipantMutation.mutate(formData);
-    event.currentTarget.reset();
-  };
-
   if (isLoading) {
     return <LoadingComponent />;
   }
@@ -82,7 +69,7 @@ function Default() {
         theme="light"
       />
       <TopBar>
-        <StyledForm onSubmit={handleSubmit}>
+        <StyledForm onSubmit={(event) => handleSubmit(event, addParticipantMutation)}>
           <Input
             name="firstname"
             placeholder={t("editor_form_first_name.input")}

@@ -12,39 +12,19 @@ const TopBar = styled.div`
   padding: 45px;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  column-gap: 10px;
+  row-gap: 20px;
 `;
 
 const StyledForm = styled.form`
   gap: 16px;
   justify-content: center;
   display: flex;
-`;
-
-const ContentContainer = styled.div`
-  display: flex;
   flex-wrap: wrap;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  color: #575757;
-`;
-
-const TitleContainer = styled.div`
-  margin-bottom: 24px;
-`;
-
-const DataContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 100px;
-  justify-content: center;
 `;
 
 export {
   ChartContainer,
   TopBar,
   StyledForm,
-  ContentContainer,
-  TitleContainer,
-  DataContainer,
 };

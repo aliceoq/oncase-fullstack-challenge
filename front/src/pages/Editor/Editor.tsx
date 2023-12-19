@@ -5,7 +5,7 @@ import { ContentContainer, Flex, StyledForm } from "./Editor.styles";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import { t } from "i18next";
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import {
   deleteParticipant,
@@ -13,6 +13,7 @@ import {
 } from "../../services/participant.service";
 import { queryClient } from "../..";
 import { toast } from "react-toastify";
+import { handleSubmit } from "../../utils/form";
 
 function Editor() {
   const context = useOutletContext<ContextType>();
@@ -75,18 +76,6 @@ function Editor() {
     });
   };
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const formData: Participant = {
-      name: event.currentTarget.firstname.value,
-      lastname: event.currentTarget.lastname.value,
-      participation: event.currentTarget.participation.value,
-    };
-
-    editParticipantMutation.mutate(formData);
-    event.currentTarget.reset();
-  };
-
   return (
     <ContentContainer>
       <h1>Editor</h1>
@@ -96,7 +85,9 @@ function Editor() {
           onEdit={handleEdit}
           onDelete={handleDelete}
         />
-        <StyledForm onSubmit={handleSubmit}>
+        <StyledForm
+          onSubmit={(event) => handleSubmit(event, editParticipantMutation)}
+        >
           <Input
             name="firstname"
             disabled

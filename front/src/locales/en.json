@@ -8,10 +8,10 @@
     "editor_form_participation.input": "Participation",
     "editor_form.button": "Send",
     "toast_add.success": "Participant added successfully!",
-    "toast_add.error": "Error while creating new participant.",
+    "toast_add.error": "It was not possible to add the new participant. Check the attributes.",
     "toast_edit.success": "Participant edited successfully!",
-    "toast_edit.error": "Error while updating participant.",
+    "toast_edit.error": "It was not possible to update the participant. Check the attributes.",
     "toast_delete.success": "Participant deleted successfully!",
-    "toast_delete.error": "Error while deleting participant.",
+    "toast_delete.error": "It was not possible to delete the participant.",
     "chart.remaining": "Remaining"
 }

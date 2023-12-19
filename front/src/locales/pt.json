@@ -8,10 +8,10 @@
     "editor_form_participation.input": "Participação",
     "editor_form.button": "Enviar",
     "toast_add.success": "Participante adicionado com sucesso!",
-    "toast_add.error": "Erro durante a criação do participante.",
+    "toast_add.error": "Não foi possível criar o participante. Cheque se os atributos estão corretos.",
     "toast_edit.success": "Participante editado com sucesso!",
-    "toast_edit.error": "Error durante a edição do participante.",
+    "toast_edit.error": "Não foi possível editar o participante. Cheque se os atributos estão corretos.",
     "toast_delete.success": "Participante deletado com sucesso!",
-    "toast_delete.error": "Error durante a remoção do participante.",
+    "toast_delete.error": "Não foi possível deletar o participante.",
     "chart.remaining": "Em falta"
 }

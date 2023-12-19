@@ -46,7 +46,8 @@ const ButtonCell = styled(TableCell)`
   color: #AFB0B0;
   min-width: 0px;
   transition: all 0.3s ease-out;
-
+  cursor: pointer;
+  
   &:hover {
     color: #575757;
   }

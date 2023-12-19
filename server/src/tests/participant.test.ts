@@ -32,17 +32,17 @@ describe("Participants", () => {
 
   it("should create new participant", async () => {
     const response = await request(app).post("/participants").send(newParticipant);
-    expect(response.body.data.name).toBe(newParticipant.name);
-    expect(response.body.data.lastname).toBe(newParticipant.lastname);
-    expect(response.body.data.participation).toBe(newParticipant.participation);
+    expect(response.body.name).toBe(newParticipant.name);
+    expect(response.body.lastname).toBe(newParticipant.lastname);
+    expect(response.body.participation).toBe(newParticipant.participation);
     expect(response.status).toBe(201);
   });
 
   it("should update the new participant", async () => {
     const response = await request(app).put("/participants").send(updatedParticipant);
-    expect(response.body.data.name).toBe(updatedParticipant.name);
-    expect(response.body.data.lastname).toBe(updatedParticipant.lastname);
-    expect(response.body.data.participation).toBe(updatedParticipant.participation);
+    expect(response.body.name).toBe(updatedParticipant.name);
+    expect(response.body.lastname).toBe(updatedParticipant.lastname);
+    expect(response.body.participation).toBe(updatedParticipant.participation);
     expect(response.status).toBe(200);
   });
 

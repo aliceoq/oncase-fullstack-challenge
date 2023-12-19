@@ -10,7 +10,7 @@ const createParticipantQuery = async (participant: Participant) => {
 };
 
 const getParticipantsQuery = async (): Promise<Participant[]> => {
-  const { rows } = await pool.query('SELECT * FROM "participants"');
+  const { rows } = await pool.query('SELECT * FROM "participants" ORDER BY id ASC');
   return rows;
 };
 

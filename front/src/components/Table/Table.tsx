@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { Participant } from "../../types";
 import {
   IndexCell,
@@ -13,14 +14,16 @@ interface Props {
 }
 
 function Table({ participants }: Props) {
+  const { t } = useTranslation();
+  
   return (
     <StyledTable>
       <thead>
         <TableRow>
           <TableHeader></TableHeader>
-          <TableHeader>First name</TableHeader>
-          <TableHeader>Last name</TableHeader>
-          <TableHeader>Participation</TableHeader>
+          <TableHeader>{t("editor_form_first_name.input")}</TableHeader>
+          <TableHeader>{t("editor_form_last_name.input")}</TableHeader>
+          <TableHeader>{t("editor_form_participation.input")}</TableHeader>
         </TableRow>
       </thead>
       <tbody>

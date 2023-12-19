@@ -11,16 +11,13 @@ const chartOptions: ApexOptions = {
     position: "right",
     fontSize: "12px",
     markers: {
-      width: 25,
-      height: 25,
+      width: 16,
+      height: 16,
       radius: 5,
       offsetX: -8,
     },
     labels: {
       useSeriesColors: true,
-    },
-    itemMargin: {
-      vertical: 10,
     },
   },
   dataLabels: {
@@ -39,8 +36,8 @@ function DonutChart({ participants }: Props) {
   );
   const remainingParticipation = Math.max(0, 100 - totalParticipation);
 
-  const series = [...participants.map((participant) => participant.participation), remainingParticipation];
-  const labels = [...participants.map((participant) => `${participant.name} ${participant.lastname}`), 'Remaining'];
+  const series = [remainingParticipation, ...participants.map((participant) => participant.participation)];
+  const labels = ['Remaining', ...participants.map((participant) => `${participant.name} ${participant.lastname}`),];
 
   const options: ApexOptions = {
     ...chartOptions,

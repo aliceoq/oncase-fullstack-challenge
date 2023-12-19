@@ -15,9 +15,13 @@ import { useMutation } from "@tanstack/react-query";
 import { addParticipant } from "../../services/participant.service";
 import { FormEvent } from "react";
 import { queryClient } from "../..";
+import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 function Editor() {
+  const { t } = useTranslation();
   const context = useOutletContext<ContextType>();
+
   const addParticipantMutation = useMutation({
     mutationFn: async (newParticipant: Participant) => {
       const { data } = await addParticipant(newParticipant);
@@ -28,6 +32,10 @@ function Editor() {
         queryKey: ["getParticipants"],
         refetchType: "active",
       });
+      toast.success(t("toast_add.success"));
+    },
+    onError: () => {
+      toast.error(t("toast_add.error"));
     },
   });
 
@@ -47,15 +55,21 @@ function Editor() {
   return (
     <div>
       <StyledForm onSubmit={handleSubmit}>
-        <Input name="firstname" placeholder="First name" />
-        <Input name="lastname" placeholder="Last name" />
-        <Input name="participation" placeholder="Participation" />
-        <Button type="submit">SEND</Button>
+        <Input
+          name="firstname"
+          placeholder={t("editor_form_first_name.input")}
+        />
+        <Input name="lastname" placeholder={t("editor_form_last_name.input")} />
+        <Input
+          name="participation"
+          placeholder={t("editor_form_participation.input")}
+        />
+        <Button type="submit">{t("editor_form.button")}</Button>
       </StyledForm>
       <ContentContainer>
         <TitleContainer>
-          <h1>Data</h1>
-          <p>Descrição</p>
+          <h1>{t("editor.title")}</h1>
+          <p>{t("editor.description")}</p>
         </TitleContainer>
         <DataContainer>
           <Table participants={context.participants} />

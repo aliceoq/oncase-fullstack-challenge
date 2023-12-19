@@ -2,6 +2,8 @@ import { Outlet } from "react-router-dom";
 import { getParticipants } from "../../services/participant.service";
 import { useQuery } from "@tanstack/react-query";
 import ErrorComponent from "../../components/ErrorComponent/ErrorComponent";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Default() {
   const { isLoading, isError, data, error } = useQuery({
@@ -20,7 +22,23 @@ function Default() {
     return <ErrorComponent>Error: {error.message}</ErrorComponent>;
   }
 
-  return <Outlet context={{ participants: data ?? [] }} />;
+  return (
+    <div>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+      <Outlet context={{ participants: data ?? [] }} />
+    </div>
+  );
 }
 
 export default Default;

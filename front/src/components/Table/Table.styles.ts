@@ -13,12 +13,14 @@ const TableHeader = styled.th`
   text-align: left;
   border: 1px solid #ddd;
   font-weight: 400;
+  text-align: center;
 `;
 
 const TableCell = styled.td`
   padding: 8px;
   text-align: left;
   border: 1px solid #ddd;
+  min-width: 100px;
 `;
 
 const IndexCell = styled(TableCell)`

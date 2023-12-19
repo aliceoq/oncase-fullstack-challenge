@@ -27,6 +27,8 @@ const ContentContainer = styled.div`
   flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
+  text-align: center;
+  color: #575757;
 `;
 
 const TitleContainer = styled.div`

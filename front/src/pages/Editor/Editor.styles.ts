@@ -1,27 +1,5 @@
 import styled from "styled-components";
 
-const Root = styled.div`
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-`;
-
-const ChartContainer = styled.div`
-  height: 400px;
-  width: 400px;
-  max-width: 80%;
-`;
-
-const StyledForm = styled.form`
-  background-color: #00B8E2;
-  gap: 16px;
-  justify-content: center;
-  display: flex;
-  flex-wrap: wrap;
-  padding: 45px;
-`;
-
 const ContentContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -29,24 +7,26 @@ const ContentContainer = styled.div`
   align-items: center;
   text-align: center;
   color: #575757;
+  gap: 40px;
 `;
 
-const TitleContainer = styled.div`
-  margin-bottom: 24px;
-`;
-
-const DataContainer = styled.div`
+const Flex = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  gap: 100px;
   justify-content: center;
+  width: 100%;
+  gap: 8em;
 `;
 
-export {
-  Root,
-  ChartContainer,
-  StyledForm,
-  ContentContainer,
-  TitleContainer,
-  DataContainer,
-};
+const StyledForm = styled.form`
+  background-color: #00b8e2;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 16px;
+  border-radius: 5px;
+`;
+
+export { ContentContainer, Flex, StyledForm };

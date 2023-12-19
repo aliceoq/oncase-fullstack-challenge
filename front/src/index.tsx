@@ -8,10 +8,10 @@ import {
 import "./index.css";
 import Default from "./pages/Default/Default";
 import Editor from "./pages/Editor/Editor";
-import AdvancedEditor from "./pages/AdvancedEditor/AdvancedEditor";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { I18nextProvider } from "react-i18next";
 import i18n from "./i18n";
+import DataView from "./pages/DataView/DataView";
 
 export const queryClient = new QueryClient();
 const router = createBrowserRouter([
@@ -20,12 +20,12 @@ const router = createBrowserRouter([
     element: <Default />,
     children: [
       {
-        path: "/",
-        element: <Editor />,
+        path: '/',
+        element: <DataView />
       },
       {
-        path: "/advanced",
-        element: <AdvancedEditor />,
+        path: "/editor",
+        element: <Editor />,
       },
     ],
   },
@@ -38,7 +38,7 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <I18nextProvider i18n={i18n}>
-      <QueryClientProvider client={new QueryClient()}>
+      <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />
       </QueryClientProvider>
     </I18nextProvider>

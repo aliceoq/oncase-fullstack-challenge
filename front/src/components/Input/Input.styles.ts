@@ -9,10 +9,18 @@ const StyledInput = styled.input`
   background-color: #fff;
   color: #333;
   border-bottom: 2px solid #00b8e2;
-  transition: border-color 0.5s ease;
 
   &:focus, &:hover {
+    transition: border-color 0.5s ease;
     border-bottom: 2px solid #575757;
+  }
+
+  &:disabled {
+    transition: border-color 0.5s ease;
+    background-color: #f0f0f0;
+    color: #999;
+    cursor: not-allowed;
+    border-bottom: 0;
   }
 `;
 

@@ -35,6 +35,17 @@ const PercentageCell = styled(TableCell)`
   text-align: center;
 `;
 
+const ButtonCell = styled(TableCell)`
+  border: 0;
+  color: #AFB0B0;
+  min-width: 0px;
+  transition: all 0.3s ease-out;
+
+  &:hover {
+    color: #575757;
+  }
+`
+
 export {
   StyledTable,
   TableCell,
@@ -42,4 +53,5 @@ export {
   TableRow,
   IndexCell,
   PercentageCell,
+  ButtonCell,
 };

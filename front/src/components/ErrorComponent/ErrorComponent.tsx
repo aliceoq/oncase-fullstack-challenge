@@ -6,7 +6,12 @@ interface Props {
 }
 
 function ErrorComponent({ children }: Props) {
-  return <ErrorDiv>{children}</ErrorDiv>;
+  return (
+    <ErrorDiv>
+      <h1>Oops</h1>
+      {children}
+    </ErrorDiv>
+  );
 }
 
 export default ErrorComponent;

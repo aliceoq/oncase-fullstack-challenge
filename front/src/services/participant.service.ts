@@ -16,4 +16,19 @@ const addParticipant = async (participant: Participant): Promise<AxiosResponse<P
   return response;
 };
 
-export { getParticipants, addParticipant };
+const updateParticipant = async (participant: Participant): Promise<AxiosResponse<Participant>> => {
+  const response = await api.put("participants", participant, {
+    validateStatus: (status: number) => [200].includes(status),
+  });
+  return response;
+};
+
+const deleteParticipant = async (participant: Participant): Promise<AxiosResponse<object>> => {
+  const response = await api.delete("participants", {
+    data: participant,
+    validateStatus: (status: number) => [204].includes(status),
+  });
+  return response;
+};
+
+export { getParticipants, addParticipant, updateParticipant, deleteParticipant };

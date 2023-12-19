@@ -19,7 +19,7 @@ const checkValue = (value: any) => {
 
 const checkTotalParticipation = async (value: any) => {
   const sum = await getPartipationTotalQuery();
-  if (value + sum > MAX_PARTICIPATION)
+  if (parseInt(`${value}`) + sum > MAX_PARTICIPATION)
     throw new Error(
       `Participation total should not exceed ${MAX_PARTICIPATION}%`
     );

@@ -89,24 +89,27 @@ function Editor() {
           onSubmit={(event) => handleSubmit(event, editParticipantMutation)}
         >
           <Input
+            data-cy="firstname-editor"
             name="firstname"
             disabled
             placeholder={t("editor_form_first_name.input")}
             value={editingParticipant.name}
           />
           <Input
+            data-cy="lastname-editor"
             name="lastname"
             disabled
             placeholder={t("editor_form_last_name.input")}
             value={editingParticipant?.lastname}
           />
           <Input
+            data-cy="participation-editor"
             name="participation"
             placeholder={t("editor_form_participation.input")}
             value={editingParticipant?.participation}
             onChange={handleParticipationChange}
           />
-          <Button disabled={!editingParticipant}>
+          <Button data-cy="submit-editor-button" disabled={!editingParticipant}>
             {t("editor_form.button")}
           </Button>
         </StyledForm>

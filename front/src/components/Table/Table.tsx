@@ -17,7 +17,7 @@ function Table({ participants }: Props) {
   const { t } = useTranslation();
   
   return (
-    <StyledTable>
+    <StyledTable data-cy="participant-table">
       <thead>
         <TableRow>
           <TableHeader></TableHeader>

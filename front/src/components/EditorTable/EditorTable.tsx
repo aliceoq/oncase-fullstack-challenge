@@ -24,7 +24,7 @@ function EditorTable({ participants, onEdit, onDelete }: Props) {
 
   return (
     <Container>
-      <StyledTable>
+      <StyledTable data-cy="participant-edit-table">
         <thead>
           <TableRow>
             <TableHeader></TableHeader>
@@ -41,12 +41,12 @@ function EditorTable({ participants, onEdit, onDelete }: Props) {
               <TableCell>{participant.lastname}</TableCell>
               <PercentageCell>{participant.participation}%</PercentageCell>
               <ButtonCell>
-                <button onClick={() => onEdit(participant)}>
+                <button data-cy={`edit-button-${participant.name}`} onClick={() => onEdit(participant)}>
                   <EditIcon width="24" height="24" />
                 </button>
               </ButtonCell>
               <ButtonCell>
-                <button onClick={() => onDelete(participant)}>
+                <button data-cy={`delete-button-${participant.name}`} onClick={() => onDelete(participant)}>
                   <DeleteIcon width="24" height="24" />
                 </button>
               </ButtonCell>

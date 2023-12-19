@@ -61,24 +61,34 @@ function Default() {
           onSubmit={(event) => handleSubmit(event, addParticipantMutation)}
         >
           <Input
+            data-cy="firstname"
             name="firstname"
             placeholder={t("editor_form_first_name.input")}
           />
           <Input
+            data-cy="lastname"
             name="lastname"
             placeholder={t("editor_form_last_name.input")}
           />
           <Input
+            data-cy="participation"
             name="participation"
             placeholder={t("editor_form_participation.input")}
           />
-          <Button type="submit">{t("editor_form.button")}</Button>
+          <Button data-cy="submit-button" type="submit">
+            {t("editor_form.button")}
+          </Button>
         </StyledForm>
         {location.pathname === "/editor" && (
-          <Button onClick={() => navigate("/")}>{t("editor.button")}</Button>
+          <Button data-cy="editor-page-button" onClick={() => navigate("/")}>
+            {t("editor.button")}
+          </Button>
         )}
         {location.pathname === "/" && (
-          <Button onClick={() => navigate("/editor")}>
+          <Button
+            data-cy="view-page-button"
+            onClick={() => navigate("/editor")}
+          >
             {t("view.button")}
           </Button>
         )}

@@ -3,21 +3,17 @@ import * as dotenv from "dotenv";
 
 dotenv.config();
 
-/* const pool = new Pool({
-  connectionString: process.env.CONNECTION_STRING,
-}); */
+const dbConfig = {
+  host: process.env.DB_HOST,
+  port: parseInt(process.env.DB_PORT ?? '5432'),
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+};
 
-const client = new pg.Client(process.env.CONNECTION_STRING);
-client.connect(function (err) {
-  if (err) {
-    return console.error("Could not connect to postgreSQL", err);
-  }
-  client.query('SELECT NOW() AS "theTime"', function (err, result) {
-    if (err) {
-      return console.error("Error running query", err);
-    }
-    console.log(result.rows[0].theTime);
-  });
-});
+const client = new pg.Client(dbConfig);
+client.connect()
+  .then(() => console.log('Connected to the database'))
+  .catch(err => console.error('Error connecting to the database', err));
 
 export { client as pool };

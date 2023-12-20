@@ -1,5 +1,11 @@
 # oncase-fullstack-challenge
 
+## Summary 
+
+- [Deploy](#-deploy)
+- [Back-end](#%EF%B8%8F-back-end)
+- [Front-end](#%EF%B8%8F-front-end)
+
 ## 🚀 Deploy
 
 The app, front and back, was deployed using [Render](https://dashboard.render.com/). Check it out [here](https://oncase-fs-challenge-registration.onrender.com).
@@ -8,15 +14,15 @@ The app, front and back, was deployed using [Render](https://dashboard.render.co
 
 Before running the project, you must have the following tools installed:
 
-Before running the project, you must have the following tools installed on your machine:
-
 - [Git](https://git-scm.com/book/pt-br/v2/Come%C3%A7ando-Instalando-o-Git)
 - [Node.js](https://nodejs.org/pt-br/download/package-manager/)
 - [PostgreSQL](https://www.postgresql.org/)
 
 ### 🔨 Cloning the repository
 
+```
 git clone https://github.com/aliceoq/oncase-fullstack-challenge.git
+```
 
 ## ⚙️ Back-end
 

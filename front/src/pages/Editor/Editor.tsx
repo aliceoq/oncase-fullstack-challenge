@@ -109,7 +109,7 @@ function Editor() {
             value={editingParticipant?.participation}
             onChange={handleParticipationChange}
           />
-          <Button data-cy="submit-editor-button" disabled={!editingParticipant}>
+          <Button data-cy="submit-editor-button" disabled={!editingParticipant.name}>
             {t("editor_form.button")}
           </Button>
         </StyledForm>

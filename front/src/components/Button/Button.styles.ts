@@ -10,6 +10,7 @@ const StyledButton = styled.button`
   font-weight: 600;
   border-radius: 2px;
   text-align: center;
+  cursor: pointer;
   
   &:hover {
     transition: all 0.3s ease-out;
@@ -23,6 +24,7 @@ const StyledButton = styled.button`
   }
 
   &:disabled {
+    cursor: auto;
     top: 0;
     color: #00A4C9;
     background-color: #00b8e2;

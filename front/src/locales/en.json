@@ -13,5 +13,6 @@
     "toast_edit.error": "It was not possible to update the participant. Check the attributes.",
     "toast_delete.success": "Participant deleted successfully!",
     "toast_delete.error": "It was not possible to delete the participant.",
+    "toast.waiting": "Sending request...",
     "chart.remaining": "Remaining"
 }

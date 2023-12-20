@@ -38,6 +38,9 @@ function Editor() {
     onError: () => {
       toast.error(t("toast_edit.error"));
     },
+    onMutate: () => {
+      toast.info(t("toast.waiting"));
+    },
   });
 
   const deleteParticipantMutation = useMutation({
@@ -54,6 +57,9 @@ function Editor() {
     },
     onError: () => {
       toast.error(t("toast_delete.error"));
+    },
+    onMutate: () => {
+      toast.info(t("toast.waiting"));
     },
   });
 
@@ -109,7 +115,10 @@ function Editor() {
             value={editingParticipant?.participation}
             onChange={handleParticipationChange}
           />
-          <Button data-cy="submit-editor-button" disabled={!editingParticipant.name}>
+          <Button
+            data-cy="submit-editor-button"
+            disabled={!editingParticipant.name || editParticipantMutation.isPending || deleteParticipantMutation.isPending}
+          >
             {t("editor_form.button")}
           </Button>
         </StyledForm>

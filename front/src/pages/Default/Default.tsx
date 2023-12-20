@@ -42,7 +42,7 @@ function Default() {
       toast.success(t("toast_add.success"));
     },
     onError: () => {
-      toast.error(t("toast_add.error"));
+      toast(t("toast_add.error"));
     },
   });
 
@@ -75,7 +75,7 @@ function Default() {
             name="participation"
             placeholder={t("editor_form_participation.input")}
           />
-          <Button data-cy="submit-button" type="submit">
+          <Button data-cy="submit-button" type="submit" disabled={addParticipantMutation.isPending}>
             {t("editor_form.button")}
           </Button>
         </StyledForm>
